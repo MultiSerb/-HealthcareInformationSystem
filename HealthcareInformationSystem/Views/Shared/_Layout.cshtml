@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
+            padding-bottom: 30px;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 0 15px;
+            }
+
+                .navbar a:hover {
+                    text-decoration: underline;
+                }
+
+            .navbar .logout {
+                margin-left: auto;
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 1.75em;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .content-wrapper {
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: white;
+        }
+
+            .btn-warning:hover {
+                background-color: #e0a800;
+            }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+            .btn-info:hover {
+                background-color: #138496;
+            }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+            }
+
+        .footer {
+            background-color: #007bff;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-muted {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="nav-link logout" href="@Url.Action("Logout", "Account")">Log Out</a>
+        }
+
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Milan Tripkovic PR27/2021</span>
+        </div>
+    </footer>
+
+</body>
+</html>

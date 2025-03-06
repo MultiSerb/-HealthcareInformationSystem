@@ -1,0 +1,148 @@
+﻿@model ProjekatBrabo.Models.Termin
+
+@{
+    ViewBag.Title = "Pregled terapije";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
+            padding-bottom: 30px;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 0 15px;
+            }
+
+                .navbar a:hover {
+                    text-decoration: underline;
+                }
+
+            .navbar .logout {
+                margin-left: auto;
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 1.75em;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .content-wrapper {
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dl-horizontal dt {
+            float: left;
+            width: 160px;
+            clear: left;
+            text-align: left;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .dl-horizontal dd {
+            margin-left: 180px;
+            margin-bottom: 10px;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+            .btn-back:hover {
+                background-color: #5a6268;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="nav-link logout" href="@Url.Action("Logout", "Account")">Log Out</a>
+    </nav>
+
+    <div class="container">
+        <h2>Pregled terapije</h2>
+
+        <div class="content-wrapper">
+            <h4>Termin</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>Datum i vreme</dt>
+                <dd>@Model.DatumVreme</dd>
+
+                <dt>Lekar</dt>
+                <dd>@Model.Lekar</dd>
+
+                <dt>Status</dt>
+                <dd>@(Model.Status ? "Slobodan" : "Zauzet")</dd>
+
+                <dt>Opis terapije</dt>
+                <dd>@Model.OpisTerapije</dd>
+            </dl>
+        </div>
+
+        <div>
+            @Html.ActionLink("Nazad na listu termina", "Index", null, new { @class = "btn btn-back" })
+        </div>
+    </div>
+</body>
+</html>

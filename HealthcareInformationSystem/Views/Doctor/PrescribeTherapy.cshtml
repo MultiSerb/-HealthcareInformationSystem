@@ -1,0 +1,170 @@
+﻿@model ProjekatBrabo.Models.Termin
+
+@{
+    ViewBag.Title = "Prepiši terapiju";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
+            padding-bottom: 30px;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 0 15px;
+            }
+
+                .navbar a:hover {
+                    text-decoration: underline;
+                }
+
+            .navbar .logout {
+                margin-left: auto;
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 1.75em;
+        }
+
+        .btn-primary, .btn-back {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+            .btn-primary:hover, .btn-back:hover {
+                background-color: #0056b3;
+            }
+
+        .content-wrapper {
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-horizontal .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-horizontal .control-label {
+            text-align: right;
+            padding-right: 15px;
+           
+        }
+
+        .form-horizontal .col-md-10 {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .btn-default {
+            background-color: #6c757d;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+            .btn-default:hover {
+                background-color: #5a6268;
+            }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .col-md-offset-2 {
+            margin-left: 16.6667%;
+           
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="nav-link logout" href="@Url.Action("Logout", "Account")">Log Out</a>
+    </nav>
+
+    <div class="container">
+        <h2>Prepiši terapiju</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="content-wrapper">
+                
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.Label("Opis terapije", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="text" name="therapyDescription" class="form-control" />
+                            @Html.ValidationMessage("therapyDescription", "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Prepiši" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Nazad na listu termina", "Index", null, new { @class = "btn btn-back" })
+        </div>
+    </div>
+</body>
+</html>

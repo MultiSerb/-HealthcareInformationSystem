@@ -1,0 +1,5 @@
+2*True*11/11/2011 11:22:00 AM*
+3*True*4/4/2004 12:00:00 AM*
+2*False*11/11/2011 12:00:00 AM*operi ruke
+2*False*12/12/2012 12:00:00 AM*operi zube
+3*False*5/5/2005 12:00:00 AM*i ti operi ruke

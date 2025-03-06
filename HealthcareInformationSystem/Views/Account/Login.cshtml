@@ -1,0 +1,55 @@
+﻿@model ProjekatBrabo.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .text-danger {
+        color: #ff0000;
+        font-size: 16px;
+        margin-top: 10px;
+        display: block;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-horizontal {
+        margin-top: 50px;
+    }
+</style>
+
+<h2 class="text-center">Login</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal col-md-4 col-md-offset-4" }))
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.KorisnickoIme, htmlAttributes: new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.KorisnickoIme, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.KorisnickoIme, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sifra, htmlAttributes: new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.Sifra, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sifra, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </div>
+}

@@ -1,0 +1,184 @@
+﻿@model ProjekatBrabo.Models.Pacijent
+
+@{
+    ViewBag.Title = "Delete Pacijent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
+            padding-bottom: 30px;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 0 15px;
+            }
+
+                .navbar a:hover {
+                    text-decoration: underline;
+                }
+
+            .navbar .logout {
+                margin-left: auto;
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 1.75em;
+        }
+
+        .content-wrapper {
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dl-horizontal {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        dt {
+            width: 20%;
+            font-weight: bold;
+        }
+
+        dd {
+            width: 80%;
+            margin-left: 0;
+        }
+
+        .btn-default, .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+            .btn-default:hover, .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="nav-link logout" href="@Url.Action("Logout", "Account")">Log Out</a>
+    </nav>
+
+    <div class="container">
+        <h2>Izbrisi Pacijenta</h2>
+
+        <div class="content-wrapper">
+            <h3>Da li si siguran da zelis da ga obrises?</h3>
+            <div>
+             
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.KorisnickoIme)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.KorisnickoIme)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.JMBG)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.JMBG)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sifra)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Sifra)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ime)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ime)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Prezime)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Prezime)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DatumRodjenja)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DatumRodjenja)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ElektronskaPosta)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ElektronskaPosta)
+                    </dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    @Html.ActionLink("Vrati se nazad na tabelu", "Index", null, new { @class = "btn btn-default" })
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
